@@ -1,0 +1,5 @@
+﻿  stdafx.cpp
+  GraduationProjectServer.cpp
+e:\毕业设计\代码\graduationprojectserver\graduationprojectserver\graduationprojectserver.cpp(64): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+e:\毕业设计\代码\graduationprojectserver\graduationprojectserver\graduationprojectserver.cpp(35): warning C4715: “LoadingWinSockDll”: 不是所有的控件路径都返回值
+  GraduationProjectServer.vcxproj -> E:\毕业设计\代码\GraduationProjectServer\x64\Debug\GraduationProjectServer.exe
