@@ -10,13 +10,18 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 
+/**
+ * @马邦进
+ * 数据库的连接池，连接池的最大容量为50，每次增加5个连接
+ */
 public class ConnectionPool {
 	  	private String jdbcDriver = ""; 		// 数据库驱动  
 	    private String dbUrl = ""; 				// 数据 URL  
 	    private String dbUsername = ""; 		// 数据库用户名  
 	    private String dbPassword = ""; 		// 数据库用户密码  
 	    private String testTable = ""; 			// 测试连接是否可用的测试表名，默认没有测试表  
-	      
+	    
+	 
 	    private  int DEFAULTCONNECTIONS = 10; 	// 连接池的初始大小  
 	    private  int INCREMENTALCONNECTIONS = 5;	// 连接池自动增加的大小  
 	    private  int MAXCONNECTIONS = 50; 		// 连接池最大的大小  

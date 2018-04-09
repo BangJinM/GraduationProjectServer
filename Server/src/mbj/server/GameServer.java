@@ -10,7 +10,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.IdleStateHandler;
 import mbj.server.codec.LengthDecoder;
 import mbj.server.codec.MessageDecoder;
 import mbj.server.codec.MessageEncoder;
