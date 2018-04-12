@@ -24,7 +24,7 @@ public class LoginDispatch {
 	private HandlerManager handlerManager=HandlerManager.GetIntance();
 	public void dispatch(ChannelHandlerContext ctx, SocketModel message) {
 		switch (message.getArea()) {
-		case LoginProtocol.Area_LoginRequest:
+		case LoginProtocol.LoginRequest:
 			checkLogin(ctx, message);
 			break;
 		default:
@@ -39,6 +39,7 @@ public class LoginDispatch {
 	 */
 	private void checkLogin(ChannelHandlerContext ctx, SocketModel message) {
 		List<String> messageList = message.getMessage();
+		System.out.println(messageList.get(0)+"  "+messageList.get(1));
 		List<PlayerInformation> lists = OperationDB.QueryPlayerWithAccountName(messageList.get(0));
 		if (!lists.isEmpty()) {
 			playerInformation=lists.get(0);

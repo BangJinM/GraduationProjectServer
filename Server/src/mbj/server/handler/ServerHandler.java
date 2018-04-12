@@ -1,5 +1,7 @@
 package mbj.server.handler;
 
+import java.awt.Window.Type;
+
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.timeout.IdleState;
@@ -27,10 +29,15 @@ public class ServerHandler extends ChannelHandlerAdapter{
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception//当客户端发送数据到服务器会触发此函数
     {
     	SocketModel message =(SocketModel) msg;
+
         switch (message.getType()) {
         case TypeProtocol.TYPE_LOGIN:
+        	System.out.println("Type"+message.getType()+"Area"+message.getArea()+"Commond"+message.getCommand()+"Count"+message.getMessage().size());
         	loginDispatch.dispatch(ctx, message);
             break;
+        case TypeProtocol.TYPE_HEATBEAT:
+        	System.out.println("HeatBeat！");
+        	break;
         default:
         	break;
         }

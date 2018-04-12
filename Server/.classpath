@@ -11,6 +11,6 @@
 	<classpathentry kind="lib" path="lib/protostuff-core-1.0.8.jar"/>
 	<classpathentry kind="lib" path="lib/protostuff-model-1.0.8.jar"/>
 	<classpathentry kind="lib" path="lib/protostuff-runtime-1.0.8.jar"/>
-	<classpathentry kind="lib" path="D:/JavaWorkSpace/Server/lib/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
