@@ -58,7 +58,5 @@ public class GameServer {
 		if (args.length != 0)
 			port = Integer.parseInt(args[0]);
 		new GameServer().bind(port);
-
 	}
-
 }
