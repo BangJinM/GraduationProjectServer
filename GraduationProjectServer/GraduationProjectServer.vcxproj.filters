@@ -19,6 +19,9 @@
     <Filter Include="tools">
       <UniqueIdentifier>{987ff839-545b-4721-b0a4-49cc1419b8f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{b80ce974-d121-40df-b10b-dedb32178b21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -32,6 +35,9 @@
     </ClInclude>
     <ClInclude Include="BaseProtocol.h">
       <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolTest.h">
+      <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
