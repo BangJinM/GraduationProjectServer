@@ -10,6 +10,18 @@
     <Filter Include="Tcp">
       <UniqueIdentifier>{39aa2571-d4ed-453f-b718-a374729f8f1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{986dcf16-10ca-4ea1-abe3-45eef78a10de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\libuv">
+      <UniqueIdentifier>{57b0b52a-abf0-43ac-ab64-2e9752eaa812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\libuv\include">
+      <UniqueIdentifier>{00f903e3-aad6-4992-a303-7ac8184eb193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\libuv\include\uv">
+      <UniqueIdentifier>{0b6aff5f-ada6-448b-9f29-f0eea9d53880}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stream.h">
@@ -18,14 +30,12 @@
     <ClInclude Include="BaseProtocol.h">
       <Filter>Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="ProtocolTest.h">
-      <Filter>Test</Filter>
-    </ClInclude>
     <ClInclude Include="TcpConnection.h">
       <Filter>Tcp</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="ProtocolTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stream.cpp">

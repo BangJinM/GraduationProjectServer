@@ -9,16 +9,16 @@ namespace network {
 		end
 	};
 
-	class IStream
+	class NIStream
 	{
 	public:
-		IStream(char* buf, std::size_t size);
-		IStream(const IStream& other);
-		IStream(IStream&& other);
-		~IStream();
+		NIStream(char* buf, std::size_t size);
+		NIStream(const NIStream& other);
+		NIStream(NIStream&& other);
+		~NIStream();
 
-		IStream& operator= (const IStream& other);
-		IStream& operator= (IStream&& other);
+		NIStream& operator= (const NIStream& other);
+		NIStream& operator= (NIStream&& other);
 
 		void copy(const char* bytes, const std::size_t size);
 		void clear();
@@ -31,25 +31,25 @@ namespace network {
 		void resetCursor();
 		void seek(long offset, StreamSeekDir dir = StreamSeekDir::cur);
 
-		IStream& operator<<(char v);
-		IStream& operator<<(unsigned char v);
-		IStream& operator<<(short v);
-		IStream& operator<<(unsigned short v);
-		IStream& operator<<(int v);
-		IStream& operator<<(unsigned int v);
-		IStream& operator<<(long long v);
-		IStream& operator<<(unsigned long long v);
-		IStream& operator<<(const char* v);
-		IStream& operator<<(const std::string& v);
-		IStream& operator<<(float v);
-		IStream& operator<<(double v);
-		IStream& operator<<(long double v);
-		IStream& operator<<(bool v);
+		NIStream& operator<<(char v);
+		NIStream& operator<<(unsigned char v);
+		NIStream& operator<<(short v);
+		NIStream& operator<<(unsigned short v);
+		NIStream& operator<<(int v);
+		NIStream& operator<<(unsigned int v);
+		NIStream& operator<<(long long v);
+		NIStream& operator<<(unsigned long long v);
+		NIStream& operator<<(const char* v);
+		NIStream& operator<<(const std::string& v);
+		NIStream& operator<<(float v);
+		NIStream& operator<<(double v);
+		NIStream& operator<<(long double v);
+		NIStream& operator<<(bool v);
 
-		IStream& write(const char* buf, std::size_t size);
+		NIStream& write(const char* buf, std::size_t size);
 
 	private:
-		void move(IStream& other);
+		void move(NIStream& other);
 		inline void writeStrLen(const std::size_t& len);
 
 	private:
@@ -58,16 +58,16 @@ namespace network {
 		std::size_t _cursor;
 	};
 
-	class OStream
+	class NOStream
 	{
 	public:
-		OStream(char* buf, std::size_t size);
-		OStream(const OStream& other);
-		OStream(OStream&& other);
-		~OStream();
+		NOStream(char* buf, std::size_t size);
+		NOStream(const NOStream& other);
+		NOStream(NOStream&& other);
+		~NOStream();
 
-		OStream& operator= (const OStream& other);
-		OStream& operator= (OStream&& other);
+		NOStream& operator= (const NOStream& other);
+		NOStream& operator= (NOStream&& other);
 
 		void copy(const char* bytes, const std::size_t size);
 		void clear();
@@ -81,26 +81,26 @@ namespace network {
 		void seek(long offset, StreamSeekDir dir = StreamSeekDir::cur);
 		void pop(std::size_t size);
 
-		OStream& operator>>(char& v);
-		OStream& operator>>(unsigned char& v);
-		OStream& operator>>(short& v);
-		OStream& operator>>(unsigned short& v);
-		OStream& operator>>(int& v);
-		OStream& operator>>(unsigned int& v);
-		OStream& operator>>(long long& v);
-		OStream& operator>>(unsigned long long& v);
-		OStream& operator>>(char* v);
-		OStream& operator>>(std::string& v);
-		OStream& operator>>(float& v);
-		OStream& operator>>(double& v);
-		OStream& operator>>(long double& v);
-		OStream& operator>>(bool& v);
+		NOStream& operator>>(char& v);
+		NOStream& operator>>(unsigned char& v);
+		NOStream& operator>>(short& v);
+		NOStream& operator>>(unsigned short& v);
+		NOStream& operator>>(int& v);
+		NOStream& operator>>(unsigned int& v);
+		NOStream& operator>>(long long& v);
+		NOStream& operator>>(unsigned long long& v);
+		NOStream& operator>>(char* v);
+		NOStream& operator>>(std::string& v);
+		NOStream& operator>>(float& v);
+		NOStream& operator>>(double& v);
+		NOStream& operator>>(long double& v);
+		NOStream& operator>>(bool& v);
 
-		OStream& read(char* buf, std::size_t size);
+		NOStream& read(char* buf, std::size_t size);
 		bool readCString(char* buf, std::size_t size);
 
 	private:
-		void move(OStream& other);
+		void move(NOStream& other);
 		std::size_t readStrLen();
 
 	private:

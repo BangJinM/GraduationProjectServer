@@ -11,12 +11,12 @@ struct HeartBeat
 	enum { ID = SE_HEARTBEAT};
 	short message;
 	HeartBeat():message(0) {}
-	friend IStream& operator<<(IStream& os, const HeartBeat& ca)
+	friend NIStream& operator<<(NIStream& os, const HeartBeat& ca)
 	{
 		os<<ca.message;
 		return os;
 	}
-	friend OStream& operator>>(OStream& bos, HeartBeat& ca)
+	friend NOStream& operator>>(NOStream& bos, HeartBeat& ca)
 	{
 		bos >> ca.message;
 		return bos;

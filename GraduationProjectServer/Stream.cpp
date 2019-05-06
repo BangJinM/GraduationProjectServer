@@ -2,7 +2,7 @@
 
 namespace network{
 
-	IStream::IStream(char* buf, std::size_t size) :
+	NIStream::NIStream(char* buf, std::size_t size) :
 		_bytes(buf),
 		_size(size),
 		_cursor(0)
@@ -10,22 +10,22 @@ namespace network{
 
 	}
 
-	IStream::IStream(const IStream& other) : IStream(nullptr, 0)
+	NIStream::NIStream(const NIStream& other) : NIStream(nullptr, 0)
 	{
 		copy(other._bytes, other._size);
 	}
 
-	IStream::IStream(IStream&& other) : IStream(nullptr, 0)
+	NIStream::NIStream(NIStream&& other) : NIStream(nullptr, 0)
 	{
 		move(other);
 	}
 
-	IStream::~IStream()
+	NIStream::~NIStream()
 	{
 		clear();
 	}
 
-	void IStream::copy(const char* bytes, const std::size_t size)
+	void NIStream::copy(const char* bytes, const std::size_t size)
 	{
 		clear();
 		if (size > 0)
@@ -37,7 +37,7 @@ namespace network{
 		}
 	}
 
-	void IStream::move(IStream& other)
+	void NIStream::move(NIStream& other)
 	{
 		clear();
 		_bytes = other._bytes;
@@ -49,7 +49,7 @@ namespace network{
 		other._cursor = 0;
 	}
 
-	void IStream::clear()
+	void NIStream::clear()
 	{
 		if (_bytes)
 		{
@@ -60,51 +60,51 @@ namespace network{
 		_cursor = 0;
 	}
 
-	void IStream::fastSet(char* bytes, const std::size_t size)
+	void NIStream::fastSet(char* bytes, const std::size_t size)
 	{
 		_bytes = bytes;
 		_size = size;
 		_cursor = 0;
 	}
 
-	IStream& IStream::operator= (const IStream& other)
+	NIStream& NIStream::operator= (const NIStream& other)
 	{
 		copy(other._bytes, other._size);
 		return *this;
 	}
 
-	IStream& IStream::operator= (IStream&& other)
+	NIStream& NIStream::operator= (NIStream&& other)
 	{
 		move(other);
 		return *this;
 	}
 
-	std::size_t IStream::getSize() const
+	std::size_t NIStream::getSize() const
 	{
 		return _size;
 	}
 
-	std::size_t IStream::getLength() const
+	std::size_t NIStream::getLength() const
 	{
 		return _cursor;
 	}
 
-	std::size_t IStream::getAvailableSize() const
+	std::size_t NIStream::getAvailableSize() const
 	{
 		return _size - _cursor;
 	}
 
-	char* IStream::getBytes() const
+	char* NIStream::getBytes() const
 	{
 		return _bytes;
 	}
 
-	void IStream::resetCursor()
+	void NIStream::resetCursor()
 	{
 		_cursor = 0;
 	}
 
-	void IStream::seek(long offset, StreamSeekDir dir /* = StreamSeekDir::cur */)
+	void NIStream::seek(long offset, StreamSeekDir dir /* = StreamSeekDir::cur */)
 	{
 		switch (dir)
 		{
@@ -131,7 +131,7 @@ namespace network{
 		}
 	}
 
-	IStream& IStream::write(const char* buf, std::size_t size)
+	NIStream& NIStream::write(const char* buf, std::size_t size)
 	{
 		if (getAvailableSize() >= size)
 		{
@@ -141,7 +141,7 @@ namespace network{
 		return *this;
 	}
 
-	void IStream::writeStrLen(const std::size_t& len)
+	void NIStream::writeStrLen(const std::size_t& len)
 	{
 		if (len < 0xff)
 		{
@@ -160,47 +160,47 @@ namespace network{
 		}
 	}
 
-	IStream& IStream::operator<<(char v)
+	NIStream& NIStream::operator<<(char v)
 	{
 		return write(&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(unsigned char v)
+	NIStream& NIStream::operator<<(unsigned char v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(short v)
+	NIStream& NIStream::operator<<(short v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(unsigned short v)
+	NIStream& NIStream::operator<<(unsigned short v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(int v)
+	NIStream& NIStream::operator<<(int v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(unsigned int v)
+	NIStream& NIStream::operator<<(unsigned int v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(long long v)
+	NIStream& NIStream::operator<<(long long v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(unsigned long long v)
+	NIStream& NIStream::operator<<(unsigned long long v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(const char* v)
+	NIStream& NIStream::operator<<(const char* v)
 	{
 		std::size_t len = strlen(v);
 		writeStrLen(len);
@@ -209,7 +209,7 @@ namespace network{
 		return write(v, len);
 	}
 
-	IStream& IStream::operator<<(const std::string& v)
+	NIStream& NIStream::operator<<(const std::string& v)
 	{
 		std::size_t len = v.length();
 		writeStrLen(len);
@@ -218,28 +218,28 @@ namespace network{
 		return write(v.data(), len);
 	}
 
-	IStream& IStream::operator<<(float v)
+	NIStream& NIStream::operator<<(float v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(double v)
+	NIStream& NIStream::operator<<(double v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(long double v)
+	NIStream& NIStream::operator<<(long double v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
-	IStream& IStream::operator<<(bool v)
+	NIStream& NIStream::operator<<(bool v)
 	{
 		return write((const char*)&v, sizeof(v));
 	}
 
 	// OStream
-	OStream::OStream(char* buf, std::size_t size) :
+	NOStream::NOStream(char* buf, std::size_t size) :
 		_bytes(buf),
 		_size(size),
 		_cursor(0)
@@ -247,22 +247,22 @@ namespace network{
 
 	}
 
-	OStream::OStream(const OStream& other) : OStream(nullptr, 0)
+	NOStream::NOStream(const NOStream& other) : NOStream(nullptr, 0)
 	{
 		copy(other._bytes, other._size);
 	}
 
-	OStream::OStream(OStream&& other) : OStream(nullptr, 0)
+	NOStream::NOStream(NOStream&& other) : NOStream(nullptr, 0)
 	{
 		move(other);
 	}
 
-	OStream::~OStream()
+	NOStream::~NOStream()
 	{
 		clear();
 	}
 
-	void OStream::copy(const char* bytes, const std::size_t size)
+	void NOStream::copy(const char* bytes, const std::size_t size)
 	{
 		clear();
 		if (size > 0)
@@ -274,7 +274,7 @@ namespace network{
 		}
 	}
 
-	void OStream::move(OStream& other)
+	void NOStream::move(NOStream& other)
 	{
 		clear();
 		_bytes = other._bytes;
@@ -286,7 +286,7 @@ namespace network{
 		other._cursor = 0;
 	}
 
-	void OStream::clear()
+	void NOStream::clear()
 	{
 		if (_bytes)
 		{
@@ -297,51 +297,51 @@ namespace network{
 		_cursor = 0;
 	}
 
-	void OStream::fastSet(char* bytes, const std::size_t size)
+	void NOStream::fastSet(char* bytes, const std::size_t size)
 	{
 		_bytes = bytes;
 		_size = size;
 		_cursor = 0;
 	}
 
-	OStream& OStream::operator= (const OStream& other)
+	NOStream& NOStream::operator= (const NOStream& other)
 	{
 		copy(other._bytes, other._size);
 		return *this;
 	}
 
-	OStream& OStream::operator= (OStream&& other)
+	NOStream& NOStream::operator= (NOStream&& other)
 	{
 		move(other);
 		return *this;
 	}
 
-	std::size_t OStream::getSize() const
+	std::size_t NOStream::getSize() const
 	{
 		return _size;
 	}
 
-	std::size_t OStream::getAvailableSize() const
+	std::size_t NOStream::getAvailableSize() const
 	{
 		return _size - _cursor;
 	}
 
-	char* OStream::getBytes() const
+	char* NOStream::getBytes() const
 	{
 		return _bytes;
 	}
 
-	char* OStream::getReadData() const
+	char* NOStream::getReadData() const
 	{
 		return _bytes + _cursor;
 	}
 
-	void OStream::resetCursor()
+	void NOStream::resetCursor()
 	{
 		_cursor = 0;
 	}
 
-	void OStream::seek(long offset, StreamSeekDir dir /* = StreamSeekDir::cur */)
+	void NOStream::seek(long offset, StreamSeekDir dir /* = StreamSeekDir::cur */)
 	{
 		switch (dir)
 		{
@@ -368,14 +368,14 @@ namespace network{
 		}
 	}
 
-	void OStream::pop(std::size_t size)
+	void NOStream::pop(std::size_t size)
 	{
 		if (size <= 0) return;
 		_cursor += size;
 		if (_cursor > _size) _cursor = _size;
 	}
 
-	OStream& OStream::read(char* buf, std::size_t size)
+	NOStream& NOStream::read(char* buf, std::size_t size)
 	{
 		if (getAvailableSize() >= size)
 		{
@@ -387,7 +387,7 @@ namespace network{
 		return *this;
 	}
 
-	bool OStream::readCString(char* buf, std::size_t size)
+	bool NOStream::readCString(char* buf, std::size_t size)
 	{
 		if (size <= 0)
 			return false;
@@ -404,7 +404,7 @@ namespace network{
 		return true;
 	}
 
-	std::size_t OStream::readStrLen()
+	std::size_t NOStream::readStrLen()
 	{
 		std::size_t len = -1;
 		{
@@ -438,47 +438,47 @@ namespace network{
 		return len;
 	}
 
-	OStream& OStream::operator>>(char& v)
+	NOStream& NOStream::operator>>(char& v)
 	{
 		return read(&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(unsigned char& v)
+	NOStream& NOStream::operator>>(unsigned char& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(short& v)
+	NOStream& NOStream::operator>>(short& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(unsigned short& v)
+	NOStream& NOStream::operator>>(unsigned short& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(int& v)
+	NOStream& NOStream::operator>>(int& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(unsigned int& v)
+	NOStream& NOStream::operator>>(unsigned int& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(long long& v)
+	NOStream& NOStream::operator>>(long long& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(unsigned long long& v)
+	NOStream& NOStream::operator>>(unsigned long long& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(char* v)
+	NOStream& NOStream::operator>>(char* v)
 	{
 		std::size_t len = readStrLen();
 		if (len == 0)
@@ -486,7 +486,7 @@ namespace network{
 		return read(v, len);
 	}
 
-	OStream& OStream::operator>>(std::string& v)
+	NOStream& NOStream::operator>>(std::string& v)
 	{
 		std::size_t len = readStrLen();
 		if (len == 0)
@@ -495,22 +495,22 @@ namespace network{
 		return read((char*)v.data(), v.size());
 	}
 
-	OStream& OStream::operator>>(float& v)
+	NOStream& NOStream::operator>>(float& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(double& v)
+	NOStream& NOStream::operator>>(double& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(long double& v)
+	NOStream& NOStream::operator>>(long double& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
 
-	OStream& OStream::operator>>(bool& v)
+	NOStream& NOStream::operator>>(bool& v)
 	{
 		return read((char*)&v, sizeof(v));
 	}
