@@ -7,20 +7,20 @@
     <Filter Include="Test">
       <UniqueIdentifier>{b80ce974-d121-40df-b10b-dedb32178b21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tcp">
-      <UniqueIdentifier>{39aa2571-d4ed-453f-b718-a374729f8f1f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="External">
       <UniqueIdentifier>{986dcf16-10ca-4ea1-abe3-45eef78a10de}</UniqueIdentifier>
     </Filter>
-    <Filter Include="External\libuv">
-      <UniqueIdentifier>{57b0b52a-abf0-43ac-ab64-2e9752eaa812}</UniqueIdentifier>
+    <Filter Include="Tcp_libuv">
+      <UniqueIdentifier>{39aa2571-d4ed-453f-b718-a374729f8f1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="External\libuv\include">
-      <UniqueIdentifier>{00f903e3-aad6-4992-a303-7ac8184eb193}</UniqueIdentifier>
+    <Filter Include="External\log4z">
+      <UniqueIdentifier>{06646153-9721-4044-93be-56ca13f17a77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="External\libuv\include\uv">
-      <UniqueIdentifier>{0b6aff5f-ada6-448b-9f29-f0eea9d53880}</UniqueIdentifier>
+    <Filter Include="External\openssl">
+      <UniqueIdentifier>{1d343675-cb53-4ba5-abd8-6e60413f454f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\openssl\include">
+      <UniqueIdentifier>{d8da0392-f8b8-46f1-9a64-ec8519827a4c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -30,21 +30,282 @@
     <ClInclude Include="BaseProtocol.h">
       <Filter>Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="TcpConnection.h">
-      <Filter>Tcp</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ProtocolTest.h" />
+    <ClInclude Include="External\log4z\log4z.h">
+      <Filter>External\log4z</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\pod_circularbuffer.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\tcpclient.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\tcpserver.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\tcpserverprotocolprocess.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\thread_uv.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\DumpFile.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\net_base.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\packet_sync.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\e_os2.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ebcdic.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ec.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ecdh.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ecdsa.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\engine.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\err.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\evp.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\hmac.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\idea.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\kdf.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\lhash.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\md2.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\md4.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\md5.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\mdc2.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\modes.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\obj_mac.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\objects.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ocsp.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\opensslconf.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\opensslv.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ossl_typ.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\pem.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\pem2.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\pkcs7.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\pkcs12.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\rand.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\rc2.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\rc4.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\rc5.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ripemd.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\rsa.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\safestack.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\seed.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\sha.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\srp.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\srtp.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ssl.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ssl2.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ssl3.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\stack.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\symhacks.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\tls1.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ts.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\txt_db.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ui.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\whrlpool.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\x509.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\x509_vfy.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\x509v3.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\aes.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\asn1.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\asn1_mac.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\asn1t.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\async.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\bio.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\blowfish.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\bn.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\buffer.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\camellia.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\cast.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\cmac.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\cms.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\comp.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\conf.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\conf_api.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\crypto.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\ct.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\des.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\dh.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\dsa.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
+    <ClInclude Include="External\openssl\include\win32\openssl\dtls1.h">
+      <Filter>External\openssl\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stream.cpp">
       <Filter>Protocol</Filter>
     </ClCompile>
-    <ClCompile Include="TcpConnection.cpp">
-      <Filter>Tcp</Filter>
-    </ClCompile>
     <ClCompile Include="GraduationProjectServer.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="External\log4z\log4z.cpp">
+      <Filter>External\log4z</Filter>
+    </ClCompile>
+    <ClCompile Include="Tcp_libuv\tcpclient.cpp">
+      <Filter>Tcp_libuv</Filter>
+    </ClCompile>
+    <ClCompile Include="Tcp_libuv\tcpserver.cpp">
+      <Filter>Tcp_libuv</Filter>
+    </ClCompile>
+    <ClCompile Include="Tcp_libuv\test_tcpclient.cpp">
+      <Filter>Tcp_libuv</Filter>
+    </ClCompile>
+    <ClCompile Include="Tcp_libuv\test_tcpclient_reconnect.cpp">
+      <Filter>Tcp_libuv</Filter>
+    </ClCompile>
+    <ClCompile Include="Tcp_libuv\test_tcpserver.cpp">
+      <Filter>Tcp_libuv</Filter>
+    </ClCompile>
+    <ClCompile Include="External\openssl\include\win32\openssl\applink.c">
+      <Filter>External\openssl\include</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

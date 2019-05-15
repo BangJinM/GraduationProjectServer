@@ -90,14 +90,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GraduationProjectServer\External\libuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GraduationProjectServer\External\libuv\include;$(SolutionDir)GraduationProjectServer\External\openssl\include\win32;$(SolutionDir)GraduationProjectServer\External\log4z;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)GraduationProjectServer\External\libuv\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)GraduationProjectServer\External\libuv\lib;$(SolutionDir)GraduationProjectServer\External\openssl\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libuv.lib;Ws2_32.lib;userenv.lib;IPHLPAPI.lib;Psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -153,13 +153,96 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseProtocol.h" />
+    <ClInclude Include="External\log4z\log4z.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\aes.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\asn1.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\asn1t.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\asn1_mac.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\async.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\bio.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\blowfish.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\bn.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\buffer.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\camellia.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\cast.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\cmac.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\cms.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\comp.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\conf.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\conf_api.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\crypto.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ct.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\des.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\dh.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\dsa.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\dtls1.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ebcdic.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ec.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ecdh.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ecdsa.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\engine.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\err.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\evp.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\e_os2.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\hmac.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\idea.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\kdf.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\lhash.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\md2.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\md4.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\md5.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\mdc2.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\modes.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\objects.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\obj_mac.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ocsp.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\opensslconf.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\opensslv.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ossl_typ.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\pem.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\pem2.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\pkcs12.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\pkcs7.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\rand.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\rc2.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\rc4.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\rc5.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ripemd.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\rsa.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\safestack.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\seed.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\sha.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\srp.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\srtp.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ssl.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ssl2.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ssl3.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\stack.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\symhacks.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\tls1.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ts.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\txt_db.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\ui.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\whrlpool.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\x509.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\x509v3.h" />
+    <ClInclude Include="External\openssl\include\win32\openssl\x509_vfy.h" />
     <ClInclude Include="ProtocolTest.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TcpConnection.h" />
+    <ClInclude Include="Tcp_libuv\DumpFile.h" />
+    <ClInclude Include="Tcp_libuv\net_base.h" />
+    <ClInclude Include="Tcp_libuv\packet_sync.h" />
+    <ClInclude Include="Tcp_libuv\pod_circularbuffer.h" />
+    <ClInclude Include="Tcp_libuv\tcpclient.h" />
+    <ClInclude Include="Tcp_libuv\tcpserver.h" />
+    <ClInclude Include="Tcp_libuv\tcpserverprotocolprocess.h" />
+    <ClInclude Include="Tcp_libuv\thread_uv.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="External\log4z\log4z.cpp" />
+    <ClCompile Include="External\openssl\include\win32\openssl\applink.c" />
     <ClCompile Include="GraduationProjectServer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -168,7 +251,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Stream.cpp" />
-    <ClCompile Include="TcpConnection.cpp" />
+    <ClCompile Include="Tcp_libuv\tcpclient.cpp" />
+    <ClCompile Include="Tcp_libuv\tcpserver.cpp" />
+    <ClCompile Include="Tcp_libuv\test_tcpclient.cpp" />
+    <ClCompile Include="Tcp_libuv\test_tcpclient_reconnect.cpp" />
+    <ClCompile Include="Tcp_libuv\test_tcpserver.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
