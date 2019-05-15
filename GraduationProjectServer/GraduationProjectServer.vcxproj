@@ -97,9 +97,19 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)GraduationProjectServer\External\libuv\lib;$(SolutionDir)GraduationProjectServer\External\openssl\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libuv.lib;Ws2_32.lib;userenv.lib;IPHLPAPI.lib;Psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)GraduationProjectServer\External\libuv\lib\;$(SolutionDir)GraduationProjectServer\External\openssl\prebuilt\win32\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libuv.lib;Ws2_32.lib;userenv.lib;IPHLPAPI.lib;Psapi.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
+    <CustomBuildStep>
+      <Command>xcopy /Y /Q "$(LocalDebuggerWorkingDirectory)External\openssl\prebuilt\win32\*.dll" "$(OutDir)"</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(TargetName).cab</Outputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Inputs>$(TargetFileName)</Inputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -228,6 +238,7 @@
     <ClInclude Include="External\openssl\include\win32\openssl\x509v3.h" />
     <ClInclude Include="External\openssl\include\win32\openssl\x509_vfy.h" />
     <ClInclude Include="ProtocolTest.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="targetver.h" />
@@ -235,7 +246,6 @@
     <ClInclude Include="Tcp_libuv\net_base.h" />
     <ClInclude Include="Tcp_libuv\packet_sync.h" />
     <ClInclude Include="Tcp_libuv\pod_circularbuffer.h" />
-    <ClInclude Include="Tcp_libuv\tcpclient.h" />
     <ClInclude Include="Tcp_libuv\tcpserver.h" />
     <ClInclude Include="Tcp_libuv\tcpserverprotocolprocess.h" />
     <ClInclude Include="Tcp_libuv\thread_uv.h" />
@@ -251,11 +261,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Stream.cpp" />
-    <ClCompile Include="Tcp_libuv\tcpclient.cpp" />
     <ClCompile Include="Tcp_libuv\tcpserver.cpp" />
-    <ClCompile Include="Tcp_libuv\test_tcpclient.cpp" />
-    <ClCompile Include="Tcp_libuv\test_tcpclient_reconnect.cpp" />
-    <ClCompile Include="Tcp_libuv\test_tcpserver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GraduationProjectServer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

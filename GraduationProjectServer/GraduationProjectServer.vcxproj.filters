@@ -39,9 +39,6 @@
     <ClInclude Include="Tcp_libuv\pod_circularbuffer.h">
       <Filter>Tcp_libuv</Filter>
     </ClInclude>
-    <ClInclude Include="Tcp_libuv\tcpclient.h">
-      <Filter>Tcp_libuv</Filter>
-    </ClInclude>
     <ClInclude Include="Tcp_libuv\tcpserver.h">
       <Filter>Tcp_libuv</Filter>
     </ClInclude>
@@ -279,6 +276,7 @@
     <ClInclude Include="External\openssl\include\win32\openssl\dtls1.h">
       <Filter>External\openssl\include</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stream.cpp">
@@ -289,23 +287,14 @@
     <ClCompile Include="External\log4z\log4z.cpp">
       <Filter>External\log4z</Filter>
     </ClCompile>
-    <ClCompile Include="Tcp_libuv\tcpclient.cpp">
-      <Filter>Tcp_libuv</Filter>
-    </ClCompile>
     <ClCompile Include="Tcp_libuv\tcpserver.cpp">
-      <Filter>Tcp_libuv</Filter>
-    </ClCompile>
-    <ClCompile Include="Tcp_libuv\test_tcpclient.cpp">
-      <Filter>Tcp_libuv</Filter>
-    </ClCompile>
-    <ClCompile Include="Tcp_libuv\test_tcpclient_reconnect.cpp">
-      <Filter>Tcp_libuv</Filter>
-    </ClCompile>
-    <ClCompile Include="Tcp_libuv\test_tcpserver.cpp">
       <Filter>Tcp_libuv</Filter>
     </ClCompile>
     <ClCompile Include="External\openssl\include\win32\openssl\applink.c">
       <Filter>External\openssl\include</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GraduationProjectServer.rc" />
   </ItemGroup>
 </Project>
