@@ -1,5 +1,0 @@
-2019-05-16 00:34:11.824 [22288] LOG_ALARM -----------------  log4z thread started!   ---------------------------- log4z.cpp:1923
-2019-05-16 00:34:11.825 [22288] LOG_ALARM logger id=0 key=Main name=Main path=log/ level=1 display=true log4z.cpp:1933
-2019-05-16 00:34:11.825 [2336] LOG_INFO server bind ip=0.0.0.0, port=12345 tcpserver.cpp:143
-2019-05-16 00:34:11.833 [2336] LOG_INFO server Start listen. Runing....... tcpserver.cpp:175
-2019-05-16 00:34:11.835 [20576] LOG_INFO server runing. tcpserver.cpp:96
