@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GraduationProjectServer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>tServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -162,7 +163,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BaseProtocol.h" />
     <ClInclude Include="External\log4z\log4z.h" />
     <ClInclude Include="External\openssl\include\win32\openssl\aes.h" />
     <ClInclude Include="External\openssl\include\win32\openssl\asn1.h" />
@@ -238,33 +238,32 @@
     <ClInclude Include="External\openssl\include\win32\openssl\x509v3.h" />
     <ClInclude Include="External\openssl\include\win32\openssl\x509_vfy.h" />
     <ClInclude Include="ProtocolTest.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="Protocol\BaseProtocol.h" />
+    <ClInclude Include="Protocol\Stream.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Stream.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TcpLibuv\TcpServer.h" />
     <ClInclude Include="Tcp_libuv\DumpFile.h" />
     <ClInclude Include="Tcp_libuv\net_base.h" />
     <ClInclude Include="Tcp_libuv\packet_sync.h" />
     <ClInclude Include="Tcp_libuv\pod_circularbuffer.h" />
     <ClInclude Include="Tcp_libuv\tcpserver.h" />
-    <ClInclude Include="Tcp_libuv\tcpserverprotocolprocess.h" />
+    <ClInclude Include="Tcp_libuv\tcpServerProtocolProcess.h" />
     <ClInclude Include="Tcp_libuv\thread_uv.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\log4z\log4z.cpp" />
     <ClCompile Include="External\openssl\include\win32\openssl\applink.c" />
-    <ClCompile Include="GraduationProjectServer.cpp" />
+    <ClCompile Include="Protocol\Stream.cpp" />
+    <ClCompile Include="TcpLibuv\TcpServer.cpp" />
+    <ClCompile Include="tServer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Stream.cpp" />
     <ClCompile Include="Tcp_libuv\tcpserver.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="GraduationProjectServer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

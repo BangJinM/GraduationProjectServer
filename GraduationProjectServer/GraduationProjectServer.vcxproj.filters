@@ -22,17 +22,13 @@
     <Filter Include="External\openssl\include">
       <UniqueIdentifier>{d8da0392-f8b8-46f1-9a64-ec8519827a4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TcpLibuv">
+      <UniqueIdentifier>{3627d8d2-52f9-45c7-a7f3-0216c46e0ff4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Stream.h">
-      <Filter>Protocol</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseProtocol.h">
-      <Filter>Protocol</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="ProtocolTest.h" />
     <ClInclude Include="External\log4z\log4z.h">
       <Filter>External\log4z</Filter>
     </ClInclude>
@@ -40,9 +36,6 @@
       <Filter>Tcp_libuv</Filter>
     </ClInclude>
     <ClInclude Include="Tcp_libuv\tcpserver.h">
-      <Filter>Tcp_libuv</Filter>
-    </ClInclude>
-    <ClInclude Include="Tcp_libuv\tcpserverprotocolprocess.h">
       <Filter>Tcp_libuv</Filter>
     </ClInclude>
     <ClInclude Include="Tcp_libuv\thread_uv.h">
@@ -276,13 +269,23 @@
     <ClInclude Include="External\openssl\include\win32\openssl\dtls1.h">
       <Filter>External\openssl\include</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="ProtocolTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\BaseProtocol.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Stream.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp_libuv\tcpServerProtocolProcess.h">
+      <Filter>Tcp_libuv</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpLibuv\TcpServer.h">
+      <Filter>TcpLibuv</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Stream.cpp">
-      <Filter>Protocol</Filter>
-    </ClCompile>
-    <ClCompile Include="GraduationProjectServer.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="External\log4z\log4z.cpp">
       <Filter>External\log4z</Filter>
@@ -293,8 +296,12 @@
     <ClCompile Include="External\openssl\include\win32\openssl\applink.c">
       <Filter>External\openssl\include</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="GraduationProjectServer.rc" />
+    <ClCompile Include="tServer.cpp" />
+    <ClCompile Include="Protocol\Stream.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpLibuv\TcpServer.cpp">
+      <Filter>TcpLibuv</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
