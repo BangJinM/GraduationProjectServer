@@ -284,6 +284,12 @@
     <ClInclude Include="TcpLibuv\TcpServer.h">
       <Filter>TcpLibuv</Filter>
     </ClInclude>
+    <ClInclude Include="TcpLibuv\Client.h">
+      <Filter>TcpLibuv</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpLibuv\ClientManager.h">
+      <Filter>TcpLibuv</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -301,6 +307,9 @@
       <Filter>Protocol</Filter>
     </ClCompile>
     <ClCompile Include="TcpLibuv\TcpServer.cpp">
+      <Filter>TcpLibuv</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpLibuv\ClientManager.cpp">
       <Filter>TcpLibuv</Filter>
     </ClCompile>
   </ItemGroup>

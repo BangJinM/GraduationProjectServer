@@ -1,9 +1,14 @@
 #include <uv.h>
 #include "TcpServer.h"
 #include "log4z.h"
+void acceptConnection(uv_stream_t* server, int status) {
+	
+}
+
 TcpServer::TcpServer(uv_loop_t* loop)
 {
 	_loop = loop;
+	clientManager = ClientManager::getInstance();
 }
 
 void TcpServer::startLog(const char * logpath)
@@ -62,7 +67,7 @@ bool TcpServer::bind(char * ip, int port, SEVERIPTYPE type)
 	}
 }
 
-bool TcpServer::listen(int backlog, void acceptConnection(uv_stream_t* server, int status))
+bool TcpServer::listen(int backlog)
 {
 	int r = uv_listen((uv_stream_t*)&_server, 128, acceptConnection);
 	if (r) {
@@ -72,16 +77,15 @@ bool TcpServer::listen(int backlog, void acceptConnection(uv_stream_t* server, i
 	return true; 
 }
 
-bool TcpServer::start(char * ip, int port, SEVERIPTYPE type, void acceptConnection(uv_stream_t* server, int status))
+bool TcpServer::start(char * ip, int port, SEVERIPTYPE type)
 {
-	acceptConnetion = acceptConnection;
 	if (!init()) {
 		return false;
 	}
 	if (!bind(ip, port, type)) {
 		return false;
 	}
-	if (!listen(SOMAXCONN, acceptConnection)) {
+	if (!listen(SOMAXCONN)) {
 		return false;
 	}
 	if (!run()) {

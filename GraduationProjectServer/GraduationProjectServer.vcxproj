@@ -242,6 +242,8 @@
     <ClInclude Include="Protocol\Stream.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TcpLibuv\Client.h" />
+    <ClInclude Include="TcpLibuv\ClientManager.h" />
     <ClInclude Include="TcpLibuv\TcpServer.h" />
     <ClInclude Include="Tcp_libuv\DumpFile.h" />
     <ClInclude Include="Tcp_libuv\net_base.h" />
@@ -255,6 +257,7 @@
     <ClCompile Include="External\log4z\log4z.cpp" />
     <ClCompile Include="External\openssl\include\win32\openssl\applink.c" />
     <ClCompile Include="Protocol\Stream.cpp" />
+    <ClCompile Include="TcpLibuv\ClientManager.cpp" />
     <ClCompile Include="TcpLibuv\TcpServer.cpp" />
     <ClCompile Include="tServer.cpp" />
     <ClCompile Include="stdafx.cpp">
