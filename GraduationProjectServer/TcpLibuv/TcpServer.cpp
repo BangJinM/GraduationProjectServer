@@ -1,8 +1,12 @@
 #include <uv.h>
 #include "TcpServer.h"
 #include "log4z.h"
-void acceptConnection(uv_stream_t* server, int status) {
-	
+void TcpServer::acceptConnection(uv_stream_t* server, int status) {
+	auto clientManager = ClientManager::getInstance();
+	int clientID = clientManager->getAvailClientID();
+	Client* client = new Client(clientID);
+	//auto tcpSock = server->data;
+	//int iret = uv_tcp_init(tcpsock->loop_, client->clientHandle);
 }
 
 TcpServer::TcpServer(uv_loop_t* loop)

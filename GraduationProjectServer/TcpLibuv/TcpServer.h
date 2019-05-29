@@ -6,7 +6,8 @@ enum SEVERIPTYPE
 {
 	IPV4,IPV6
 };
-void acceptConnection(uv_stream_t* server, int status);
+
+
 class TcpServer
 {
 private:
@@ -16,6 +17,7 @@ private:
 	ClientManager *clientManager;
 public:
 	static void startLog(const char* logpath = nullptr);//启动日志，必须启动才会生成日志
+	static void acceptConnection(uv_stream_t* server, int status);
 public:
 	TcpServer(uv_loop_t* loop = uv_default_loop());
 	virtual ~TcpServer();

@@ -4,12 +4,12 @@ namespace UVSERVER {
 	class Client
 	{
 	public:
-		Client() {}
+		Client(int ID):clientID(ID) {}
 		~Client() {}
 
-	private:
+	public:
 		int clientID;//ΨһID
-
+		uv_tcp_t* clientHandle;
 	};
 }
 #endif

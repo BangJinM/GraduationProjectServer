@@ -12,6 +12,17 @@ namespace UVSERVER{
 	{
 		return false;
 	}
+	int ClientManager::getAvailClientID()
+	{
+		short index = 1;
+		while (true && index <= INT_MAX)
+		{
+			if (clients.find(index) == clients.end())
+				return index;
+			++index;
+		}
+		return -1;
+	}
 	ClientManager* ClientManager::getInstance() {
 	if (clientManager == nullptr)
 		clientManager = new ClientManager();
