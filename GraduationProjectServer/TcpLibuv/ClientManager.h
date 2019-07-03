@@ -27,6 +27,7 @@ namespace UVSERVER {
 		*@return 最小的可利用ID -1为不存在可利用ID
 		**/
 		int getAvailClientID();
+
 		static ClientManager* getInstance();
 	private:
 		ClientManager() {}

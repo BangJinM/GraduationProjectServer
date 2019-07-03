@@ -2,11 +2,31 @@
 #include "TcpServer.h"
 #include "log4z.h"
 void TcpServer::acceptConnection(uv_stream_t* server, int status) {
+
+	if(status){
+		LOGE("Error acceptConnection:" + status);
+	}
 	auto clientManager = ClientManager::getInstance();
 	int clientID = clientManager->getAvailClientID();
 	Client* client = new Client(clientID);
-	//auto tcpSock = server->data;
-	//int iret = uv_tcp_init(tcpsock->loop_, client->clientHandle);
+	TcpServer* tcpsock = (TcpServer*)server->data;
+	int iret = uv_tcp_init(tcpsock->_loop, client->clientHandle);
+	if (iret)
+		return;
+	client->clientHandle->data = client;
+	iret = uv_accept((uv_stream_t*)server, (uv_stream_t*)&client->clientHandle);
+	if (iret)
+		return;
+	iret = uv_read_start((uv_stream_t*)&client->clientHandle, client->receive, client->afterRecv);
+	if (iret) {
+		uv_close((uv_handle_t*)&client->clientHandle,TcpServer::recycleTcpHandle);
+		client->isUse = false;
+		return;
+	}
+}
+
+void TcpServer::recycleTcpHandle(uv_handle_t* handle){
+
 }
 
 TcpServer::TcpServer(uv_loop_t* loop)

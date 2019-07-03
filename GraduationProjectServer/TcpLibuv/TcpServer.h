@@ -18,6 +18,7 @@ private:
 public:
 	static void startLog(const char* logpath = nullptr);//启动日志，必须启动才会生成日志
 	static void acceptConnection(uv_stream_t* server, int status);
+	static void recycleTcpHandle(uv_handle_t* handle);
 public:
 	TcpServer(uv_loop_t* loop = uv_default_loop());
 	virtual ~TcpServer();
