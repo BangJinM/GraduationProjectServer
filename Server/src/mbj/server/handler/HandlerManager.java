@@ -1,16 +1,11 @@
 package mbj.server.handler;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.ssl.ApplicationProtocolConfig.Protocol;
 import mbj.server.handler.utils.ChannelHandlerUtils;
-import mbj.server.model.SocketModel;
 import mbj.server.protocol.LoginProtocol;
 import mbj.server.protocol.TypeProtocol;
 
@@ -35,7 +30,7 @@ public class HandlerManager {
 	
 	private HandlerManager() {
 		// TODO Auto-generated constructor stub
-		handles=new HashMap();
+		handles=new HashMap<Integer, ChannelHandlerContext>();
 	}
 	
 

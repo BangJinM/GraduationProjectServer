@@ -33,7 +33,7 @@ public class GameServer {
 					.childHandler(new ChannelInitializer<SocketChannel>() {
 						@Override
 						protected void initChannel(SocketChannel ch) throws Exception {
-							ch.pipeline().addLast(new HeatBeatHandler(10, 0, 0, TimeUnit.SECONDS));// 实现心跳检测
+							ch.pipeline().addLast(new HeatBeatHandler(10, 10, 10, TimeUnit.SECONDS));// 实现心跳检测
 							ch.pipeline().addLast(new LengthDecoder(1024, 0, 4, 0, 4));
 							ch.pipeline().addLast(new MessageEncoder());
 							ch.pipeline().addLast(new MessageDecoder());

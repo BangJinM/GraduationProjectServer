@@ -38,25 +38,25 @@ public class LoginDispatch {
 	 * 
 	 */
 	private void checkLogin(ChannelHandlerContext ctx, SocketModel message) {
-		List<String> messageList = message.getMessage();
-		System.out.println(messageList.get(0)+"  "+messageList.get(1));
-		List<PlayerInformation> lists = OperationDB.QueryPlayerWithAccountName(messageList.get(0));
-		if (!lists.isEmpty()) {
-			playerInformation=lists.get(0);
-			//账号和密码与数据库比较
-			if (playerInformation.getPlayer_Account().compareTo(messageList.get(0))==0 && 
-					playerInformation.getPlayer_Password().compareTo(messageList.get(1))==0) {
-				handlerManager.AddChannelHandlerContext(playerInformation.player_ID, ctx);
-				//发送登陆成功
-				ChannelHandlerUtils.WriteMessage(ctx, TypeProtocol.TYPE_LOGIN, LoginProtocol.Login_Succeed, 1, null);
-			}else {
-				//发送密码错误
-				ChannelHandlerUtils.WriteMessage(ctx, TypeProtocol.TYPE_LOGIN, LoginProtocol.Login_InvalidPassword, 1, null);
-			}
-		}else {
-			//发送账号不存在
+		String messageList = message.getMessage();
+		System.out.println(messageList);
+		List<PlayerInformation> lists = OperationDB.QueryPlayerWithAccountName(messageList);
+		// if (!lists.isEmpty()) {
+		// 	playerInformation=lists.get(0);
+		// 	//账号和密码与数据库比较
+		// 	if (playerInformation.getPlayer_Account().compareTo(messageList.get(0))==0 && 
+		// 			playerInformation.getPlayer_Password().compareTo(messageList.get(1))==0) {
+		// 		handlerManager.AddChannelHandlerContext(playerInformation.player_ID, ctx);
+		// 		//发送登陆成功
+		// 		ChannelHandlerUtils.WriteMessage(ctx, TypeProtocol.TYPE_LOGIN, LoginProtocol.Login_Succeed, 1, null);
+		// 	}else {
+		// 		//发送密码错误
+		// 		ChannelHandlerUtils.WriteMessage(ctx, TypeProtocol.TYPE_LOGIN, LoginProtocol.Login_InvalidPassword, 1, null);
+		// 	}
+		// }else {
+		// 	//发送账号不存在
 			ChannelHandlerUtils.WriteMessage(ctx, TypeProtocol.TYPE_LOGIN, LoginProtocol.Login_InvalidUsername, 1, null);
-		}
+		// }
 	}
 
 

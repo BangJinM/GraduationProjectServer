@@ -7,8 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.PreparedStatement;
-
 public class OperationDB {
 	static ConnectionPool connPool = ConnectionPool.GetPoolInstance();// 单例模式创建连接池对象
 	public static List<PlayerInformation> QueryPlayerWithAccountName(String account) {

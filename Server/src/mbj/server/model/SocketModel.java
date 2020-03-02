@@ -1,12 +1,10 @@
 package mbj.server.model;
 
-import java.util.List;
-
 public class SocketModel {
     private int type=-1;
     private int area=-1;
     private int command=-1;
-    private List<String> message;
+    private String message;
  
     public int getType() {
         return type;
@@ -26,10 +24,10 @@ public class SocketModel {
     public void setCommand(int command) {
         this.command = command;
     }
-    public List<String> getMessage() {
+    public String getMessage() {
         return message;
     }
-    public void setMessage(List<String> message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 }
