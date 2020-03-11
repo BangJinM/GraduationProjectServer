@@ -5,7 +5,7 @@ public class MessageFactory {
         switch (messageID){
             case MessageConstants.BusinessLogic:
 
-            case MessageConstants.LoginRequest:
+            case MessageConstants.MainLogic:
 
         }
     if(messageID == MessageConstants.BusinessLogic)
