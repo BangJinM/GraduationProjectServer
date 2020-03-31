@@ -34,8 +34,6 @@ public class GameServerHandler extends ChannelInboundHandlerAdapter {
         // TODO Auto-generated method stub
         System.out.println("已经5秒未收到客户端的消息了！");
         if (evt instanceof IdleStateEvent) {
-            handlersManager.RemoveChannelHandlerContext(ctx);
-            System.out.println("关闭不活跃通道");
             ctx.close();
         }
         super.userEventTriggered(ctx, evt);
