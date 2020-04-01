@@ -4,10 +4,12 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
-import netty.server.core.entity.IdSession;
+import common.IdSession;
 import netty.server.core.entity.NettySession;
 import netty.server.core.utils.ChannelUtils;
 import org.apache.log4j.Logger;
+
+import java.io.IOException;
 
 public class GameServerHandler extends ChannelInboundHandlerAdapter {
     private final static Logger logger = Logger.getLogger(GameServerHandler.class);
@@ -42,4 +44,15 @@ public class GameServerHandler extends ChannelInboundHandlerAdapter {
             ctx.close();
         }
     }
+
+    @Override
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+		Channel channel = ctx.channel();
+		if (channel.isActive() || channel.isOpen()) {
+			ctx.close();
+		}
+		if (!(cause instanceof IOException)) {
+			logger.error("remote:" + channel.remoteAddress(), cause);
+		}
+	}
 }

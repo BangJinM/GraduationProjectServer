@@ -1,16 +1,12 @@
-/**
- * 玩家登录session，不与任何nio框架绑定
- *
- * @see IoSession
- * @see Channel
- *
- * @author kingston
- */
+package common;
+
+import common.SocketModel;
+
 public interface IdSession {
 
     static final String ID = "ID";
 
-    void sendPacket(Message packet);
+    void sendPacket(SocketModel packet);
 
     long getOwnerId();
 

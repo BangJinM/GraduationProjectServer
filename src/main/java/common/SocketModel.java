@@ -1,4 +1,4 @@
-package com.netty.server.core;
+package common;
 
 public class SocketModel {
     private int type=-1;

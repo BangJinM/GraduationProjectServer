@@ -1,5 +1,7 @@
 package netty.server.core.entity;
 
+import common.IdSession;
+import common.SocketModel;
 import io.netty.channel.Channel;
 
 import java.util.HashMap;

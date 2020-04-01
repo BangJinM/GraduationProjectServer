@@ -9,7 +9,7 @@ import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtobufIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
-import netty.server.core.entity.SocketModel;
+import common.SocketModel;
 import netty.server.core.utils.CoderUtil;
 
 public class MessageEncoder extends MessageToByteEncoder<SocketModel> {

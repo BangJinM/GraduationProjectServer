@@ -6,7 +6,7 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
-import netty.server.core.entity.SocketModel;
+import common.SocketModel;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package netty.server.core.utils;
 import io.netty.channel.Channel;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
-import netty.server.core.entity.IdSession;
+import common.IdSession;
 
 import java.net.InetSocketAddress;
 

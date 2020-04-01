@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import io.netty.channel.ChannelHandlerContext;
-import netty.server.core.entity.SocketModel;
+import common.SocketModel;
 
 /**
  * @马邦进
