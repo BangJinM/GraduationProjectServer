@@ -17,4 +17,6 @@ public interface IDistributeTask {
      * 执行业务
      */
     void action();
+
+    void actionSuccess();
 }

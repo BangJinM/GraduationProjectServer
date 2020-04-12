@@ -1,4 +1,4 @@
-package com.netty.test.lua;
+package test.lua;
 
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;

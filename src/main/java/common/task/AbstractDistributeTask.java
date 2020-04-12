@@ -34,4 +34,7 @@ public abstract class AbstractDistributeTask implements IDistributeTask {
     public void markEndMillis() {
         this.endMillis = System.currentTimeMillis();
     }
+
+    @Override
+    public void actionSuccess() { }
 }
