@@ -1,7 +1,5 @@
 package common;
 
-import common.SocketModel;
-
 public interface IdSession {
 
     static final String ID = "ID";

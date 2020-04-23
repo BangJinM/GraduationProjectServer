@@ -1,5 +1,8 @@
 package netty.server.core;
 
+import common.MessageDispatcher;
+import common.MessageDispatcherManager;
+import common.SocketModel;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -13,11 +16,12 @@ import java.io.IOException;
 
 public class GameServerHandler extends ChannelInboundHandlerAdapter {
     private final static Logger logger = Logger.getLogger(GameServerHandler.class);
-    public HandlersManager handlersManager = HandlersManager.GetIntance();
+    public MessageDispatcher messageDispatcher = MessageDispatcherManager.getInstance();
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         final Channel channel = ctx.channel();
         IdSession userSession = ChannelUtils.getSessionBy(channel);
+        messageDispatcher.dispatch(userSession, (SocketModel)msg);
         super.channelRead(ctx, msg);
     }
 
@@ -28,13 +32,13 @@ public class GameServerHandler extends ChannelInboundHandlerAdapter {
             ctx.channel().close();
             logger.error(String.format("Duplicate session,IP=[{}]", ChannelUtils.getIp(channel)));
         }
-        IdSession userSession = ChannelUtils.getSessionBy(channel);
+//        IdSession userSession = ChannelUtils.getSessionBy(channel);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        final Channel channel = ctx.channel();
-        IdSession userSession = ChannelUtils.getSessionBy(channel);
+//        final Channel channel = ctx.channel();
+//        IdSession userSession = ChannelUtils.getSessionBy(channel);
     }
 
     @Override

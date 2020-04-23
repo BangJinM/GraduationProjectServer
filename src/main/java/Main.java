@@ -1,4 +1,4 @@
-import common.MessageDispatcher;
+import common.MessageDispatcherManager;
 import netty.GameServer;
 
 public class Main {
@@ -6,7 +6,7 @@ public class Main {
         int port = 12345;
         if (args.length != 0)
             port = Integer.parseInt(args[0]);
-        MessageDispatcher messageDispatcher = new MessageDispatcher();
+        MessageDispatcherManager.getInstance();
         new GameServer().bind(port);
     }
 }

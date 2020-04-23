@@ -1,5 +1,6 @@
 package netty;
 
+import common.MessageDispatcher;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -31,4 +32,5 @@ public class GameServer {
             workGroup.shutdownGracefully();
         }
     }
+
 }

@@ -1,5 +1,6 @@
 package netty.server.core;
 
+import common.MessageDispatcher;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
