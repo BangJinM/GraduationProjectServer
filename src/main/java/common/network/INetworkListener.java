@@ -1,13 +1,15 @@
 package common.network;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public interface INetworkListener {
-    void onChannelActive();
+    void onChannelActive(ChannelHandlerContext ctx);
 
-    void onUserEventTriggered();
+    void onUserEventTriggered(ChannelHandlerContext ctx, Object evt);
 
-    void onRead();
+    void onRead(ChannelHandlerContext ctx, Object msg);
 
-    void onExceptionCaught();
+    void onExceptionCaught(ChannelHandlerContext ctx, Throwable cause);
 
-    void onChannelInactive();
+    void onChannelInactive(ChannelHandlerContext ctx);
 }

@@ -10,7 +10,7 @@ public class BaseProcessorManager {
 
     protected Map<Integer, BaseProcessor> processors;
 
-    BaseProcessorManager() {
+    public BaseProcessorManager() {
         processors = new HashMap();
     }
 

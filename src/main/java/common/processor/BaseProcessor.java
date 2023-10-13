@@ -7,7 +7,7 @@ public class BaseProcessor {
     private Executor executor;
     private int processorID;
 
-    BaseProcessor(String nameString, int id) {
+    public BaseProcessor(String nameString, int id) {
         this.processorID = id;
         this.executor = Executors.newSingleThreadExecutor(r -> {
             return new Thread(r, nameString);

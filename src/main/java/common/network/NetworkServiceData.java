@@ -7,6 +7,6 @@ public class NetworkServiceData {
     public int bossGroupCount = 0;
     public int workGroupCount = 0;
 
-    INetworkListener lNetworkListener;
-    IMessageManager messageFactory;
+    public INetworkListener lNetworkListener;
+    public IMessageManager messageFactory;
 }
