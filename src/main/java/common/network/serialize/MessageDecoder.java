@@ -20,7 +20,8 @@ public class MessageDecoder extends ByteToMessageDecoder {
         in.readBytes(data);
         AbstractMessage message = this.messageFactory.GetMessage();
         message.setLength(data.length);
-        message.decode(data);
+        message.setBytes(data);
+        message.decode();
         obj.add(message);
     }
 }

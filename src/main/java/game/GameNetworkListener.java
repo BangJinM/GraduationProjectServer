@@ -1,14 +1,16 @@
 package game;
 
-import com.mysql.cj.util.TimeUtil;
+import org.apache.log4j.Logger;
 
 import common.network.INetworkListener;
 import common.network.Session;
+import common.network.serialize.AbstractMessage;
+import common.network.serialize.ChannelAttributeKey;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.AttributeKey;
 
 public class GameNetworkListener implements INetworkListener {
+    private final static Logger logger = Logger.getLogger(GameNetworkListener.class);
     GameNoticeManager nGameNoticeManager;
     GameProcessorManager gameProcessorManager;
 
@@ -20,13 +22,13 @@ public class GameNetworkListener implements INetworkListener {
     @Override
     public void onChannelActive(ChannelHandlerContext ctx) {
         Channel channel = ctx.channel();
-        Session session = (Session) channel.attr(AttributeKey.newInstance("SESSION")).get();
+        Session session = (Session) channel.attr(ChannelAttributeKey.SESSION).get();
         if (session == null) {
             session = new Session();
             session.setChannel(channel);
-            channel.attr(AttributeKey.newInstance("SESSION")).set(session);
-            return;
+            channel.attr(ChannelAttributeKey.SESSION).set(session);
         }
+        logger.info("onChannelActive");
     }
 
     @Override
@@ -37,8 +39,10 @@ public class GameNetworkListener implements INetworkListener {
 
     @Override
     public void onRead(ChannelHandlerContext ctx, Object msg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'onRead'");
+        Session session = (Session) ctx.channel().attr(ChannelAttributeKey.SESSION).get();
+        if (session != null)
+            return;
+        AbstractMessage absMsg = (AbstractMessage) msg;
     }
 
     @Override

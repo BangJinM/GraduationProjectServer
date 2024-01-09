@@ -4,8 +4,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
+import com.mysql.cj.protocol.a.NativeServerSession;
+
 import common.network.serialize.MessageDecoder;
 import common.network.serialize.MessageEncoder;
+import common.network.serialize.websocket.WebMessageDecoder;
+import common.network.serialize.websocket.WebMessageEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -15,6 +19,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
@@ -71,10 +78,20 @@ public class NetworkService {
                 .channel(NioServerSocketChannel.class)
                 .handler(new LoggingHandler(LogLevel.DEBUG))
                 .childHandler(new ChannelInitializer<SocketChannel>() {
-
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ChannelPipeline pipeline = ch.pipeline();
+
+                        if (dServiceData.isWeb) {
+                            pipeline.addLast("HttpServerCodec", new HttpServerCodec());
+                            pipeline.addLast("HttpObjectAggregator",
+                                    new HttpObjectAggregator(NativeServerSession.CLIENT_MULTI_STATEMENTS));
+                            pipeline.addLast("WebSocketServerProtocolHandler",
+                                    new WebSocketServerProtocolHandler("/", true));
+                            pipeline.addLast("WebMessageDecoder", new WebMessageDecoder());
+                            pipeline.addLast("WebMessageEncoder", new WebMessageEncoder());
+                        }
+
                         pipeline.addLast("IdleStateHandler", new IdleStateHandler(10, 10, 10));
                         pipeline.addLast("LengthFieldBasedFrameDecoder",
                                 new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
