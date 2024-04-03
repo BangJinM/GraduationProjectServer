@@ -1,17 +1,13 @@
 package game;
 
+
 import common.network.NetworkService;
 import common.network.NetworkServiceData;
 
 public class GameServer {
     public void start() {
         NetworkServiceData serviceData = new NetworkServiceData();
-
-        GameNoticeManager gameNoticeManager = new GameNoticeManager();
-        GameProcessorManager gameProcessorManager = new GameProcessorManager();
-
-        serviceData.lNetworkListener = new GameNetworkListener(gameNoticeManager, gameProcessorManager);
-        serviceData.messageFactory = new GameMessageManager();
+        serviceData.lNetworkListener = new NetworkServiceHandler();
         serviceData.port = 12345;
 
         try {

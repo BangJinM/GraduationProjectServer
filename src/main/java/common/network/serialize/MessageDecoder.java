@@ -1,27 +1,27 @@
 package common.network.serialize;
 
+import java.util.List;
+
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
-import java.util.List;
-
 public class MessageDecoder extends ByteToMessageDecoder {
-    IMessageManager messageFactory;
-
-    public MessageDecoder(IMessageManager messageFactory) {
-        this.messageFactory = messageFactory;
-    }
-
     @Override
-    protected void decode(ChannelHandlerContext ctx, ByteBuf in,
-            List<Object> obj) throws Exception {
-        byte[] data = new byte[in.readableBytes()];
+    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> obj)
+            throws Exception {
+        int length = in.readInt();
+        int messageID = in.readInt();
+        in.readShort();
+
+        byte[] data = new byte[length - 10];
         in.readBytes(data);
-        AbstractMessage message = this.messageFactory.GetMessage();
-        message.setLength(data.length);
-        message.setBytes(data);
-        message.decode();
+        ByteBuf buf = Unpooled.buffer(data.length);
+        buf.writeBytes(data);
+
+        NetMessage message = new NetMessage(messageID, length);
+        message.setByteBuf(buf);
         obj.add(message);
     }
 }

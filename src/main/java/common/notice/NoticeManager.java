@@ -5,10 +5,6 @@ import java.util.Map;
 
 import game.NoticeTable;
 
-class NoticeData {
-
-}
-
 public abstract class NoticeManager {
     public Map<NoticeTable, NoticeData> noticeMap = new HashMap();
 

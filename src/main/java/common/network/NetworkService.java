@@ -94,11 +94,10 @@ public class NetworkService {
 
                         pipeline.addLast("IdleStateHandler", new IdleStateHandler(10, 10, 10));
                         pipeline.addLast("LengthFieldBasedFrameDecoder",
-                                new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
-                        pipeline.addLast("MessageDecoder", new MessageDecoder(dServiceData.messageFactory));
+                                new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, -4, 0));
+                        pipeline.addLast("MessageDecoder", new MessageDecoder());
                         pipeline.addLast("MessageEncoder", new MessageEncoder());
-                        pipeline.addLast("NetworkServiceHandler",
-                                new NetworkServiceHandler(dServiceData.lNetworkListener));
+                        pipeline.addLast("NetworkServiceHandler", dServiceData.lNetworkListener);
                     }
                 });
     }
